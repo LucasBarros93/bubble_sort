@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int i, j;
+void bubble_sort (int *arr, int size) {
+    int aux;
+    for (int k = 1; k < size; k++) {
+        for (int j = 0; j < size-1; j++) {
 
-int *vetor_ordenado(int *vetor, int tam_arq){
-    
-    //int tam = sizeof(vetor)/sizeof(vetor[0]);  determinando o tamanho do vetor, acredito que não será necesário
-
-    for(i = 0; i < tam_arq; i++){
-        for(j = 0; j < tam_arq; )
+            if (arr[j] > arr[j+1]) {
+                aux      = arr[j];
+                arr[j]   = arr[j+1];
+                arr[j+1] = aux;
+            }
+        }
     }
-    
 }
 
 int main(){
@@ -25,7 +27,7 @@ int main(){
         exit(0);
     }
 
-    for(i = 1; i <= 20; i++){
+    for(int i = 1; i <= 20; i++){
         fscanf(arq, "%d", &tam_arq);  // lendo apenas a primeira linha para saber quantos números o arquivo tem
         int *vetor = calloc(tam_arq, sizeof(int));
         

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void bubble_sort (int *arr, int size) {
     int aux, flag;
@@ -39,19 +40,19 @@ void main(void){
         fscanf(fp, "%d", &size);  // lendo apenas a primeira linha para saber quantos números o arquivo tem
         int *arr = calloc(size, sizeof(int));
 
-        while (fscanf(fp, "%d", &num)) {
+        while (fscanf(fp, "%d", &num) == 1) {
             arr[x] = num;
             x++;
         }
         fclose(fp);
 
+        clock_t t = clock();
         bubble_sort(arr, size);
+        t = clock() - t;
 
-      /*  if(n == 2){
-            for(int p = 0; p<size; p++){
-                printf("%d ", arr[p]);
+        double time_taken = ((double)t)/CLOCKS_PER_SEC;  // calcula o tempo levado para executar a função
+        printf("Tempo demorado para o arquivo %d: %lf\n", n, time_taken);
 
-            }  isso aqui é só pra testar se tá ordenando*/
         free(arr);
     }
     

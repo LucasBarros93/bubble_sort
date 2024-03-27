@@ -50,37 +50,73 @@ void bubble_sort_2(int *arr, int size){  // função com segunda melhoria implem
 
 int main(void) {
     int size, num;
+    
+    FILE *fw = fopen("./result.csv", "w");
+    if (fw == NULL)
+        printf("Error opening the file");
+
     for (int n = 1; n <= 20; n++) {
-        double total_time = 0.0;
+        double total_time_0 = 0.0;
+        double total_time_1 = 0.0;
+        double total_time_2 = 0.0;
+
+        char filename[13];
+        sprintf(filename, "./tests/%d.in", n);
+        FILE *fp = fopen(filename, "r");
+        if (fp == NULL) {
+            printf("Error: could not open file %s", filename);
+            return 1;
+        }
+
         for (int i = 0; i < 10; i++) {
             int x = 0;
-            char filename[10];
-            sprintf(filename, "%d.in", n);
-            FILE *fp = fopen(filename, "r");
-            if (fp == NULL) {
-                printf("Error: could not open file %s", filename);
-                return 1;
-            }
+
             fscanf(fp, "%d", &size);  // lendo apenas a primeira linha para saber quantos números o arquivo tem
-            int *arr = calloc(size, sizeof(int));
+            int *arr0 = calloc(size, sizeof(int));
+            int *arr1 = calloc(size, sizeof(int));
+            int *arr2 = calloc(size, sizeof(int));
             while (fscanf(fp, "%d", &num) == 1) {
-                arr[x] = num;
+                arr0[x] = num;
+                arr1[x] = num;
+                arr2[x] = num;
                 x++;
             }
-            fclose(fp);
 
             clock_t t = clock();
-            bubble_sort_2(arr, size);  // aqui deve ser selecionada a variação da função a ser utilizada
+            bubble_sort_0(arr0, size);  // aqui deve ser selecionada a variação da função a ser utilizada
             t = clock() - t;
 
-            double time_taken = ((double)t) / CLOCKS_PER_SEC;  // calcula o tempo levado para executar a função
-            total_time += time_taken;
+            double time_taken_0 = ((double)t) / CLOCKS_PER_SEC;  // calcula o tempo levado para executar a função
+            total_time_0 += time_taken_0;
 
-            free(arr);
+            t = clock();
+            bubble_sort_1(arr1, size);  // aqui deve ser selecionada a variação da função a ser utilizada
+            t = clock() - t;
+
+            double time_taken_1 = ((double)t) / CLOCKS_PER_SEC;  // calcula o tempo levado para executar a função
+            total_time_1 += time_taken_1;
+
+            t = clock();
+            bubble_sort_2(arr2, size);  // aqui deve ser selecionada a variação da função a ser utilizada
+            t = clock() - t;
+
+            double time_taken_2 = ((double)t) / CLOCKS_PER_SEC;  // calcula o tempo levado para executar a função
+            total_time_2 += time_taken_2;
+
+            free(arr0);
+            free(arr1);
+            free(arr2);
         }
-        double avg_time = total_time / 10.0;
-        printf("Tempo médio para o arquivo %d: %lf\n", n, avg_time);
+        fclose(fp);
+
+        double avg_time_0 = total_time_0 / 10.0;
+        double avg_time_1 = total_time_1 / 10.0;
+        double avg_time_2 = total_time_2 / 10.0;
+        //printf("Tempo médio para o arquivo %d: %lf\n", n, avg_time);
+        fprintf(fw, "%d, %lf, %lf, %lf \n", n, avg_time_0, avg_time_1, avg_time_2);
     }
+
+    fclose(fw);
+
     return 0;
 }
-

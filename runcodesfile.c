@@ -1,3 +1,6 @@
+// André Vargas VIllalba Codorniz - 14558436
+// Lucas Augusto Moreira Barros - 14590610
+
 #include <stdio.h>
 #include <stdlib.h>
 

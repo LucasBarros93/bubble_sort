@@ -74,39 +74,39 @@ print(sort2rand)
 fig, axs = plt.subplots(2, 2)
         
 # Plotagem das retas
-axs[0, 0].plot(tamanhos, sort0cres, label='Sort 1')
-axs[0, 0].plot(tamanhos, sort1cres, label='Sort 2')
-axs[0, 0].plot(tamanhos, sort2cres, label='Sort 3')
+axs[0, 0].plot(tamanhos, sort0cres, label='Sort 0')
+axs[0, 0].plot(tamanhos, sort1cres, label='Sort 1')
+axs[0, 0].plot(tamanhos, sort2cres, label='Sort 2')
 
 # Configurações do gráfico
 axs[0, 0].set_title('Crescente')
 axs[0, 0].legend()
 
 # Plotagem das retas
-axs[0, 1].plot(tamanhos, sort0decres, label='Sort 1')
-axs[0, 1].plot(tamanhos, sort1decres, label='Sort 2')
-axs[0, 1].plot(tamanhos, sort2decres, label='Sort 3')
+axs[0, 1].plot(tamanhos, sort0decres, label='Sort 0')
+axs[0, 1].plot(tamanhos, sort1decres, label='Sort 1')
+axs[0, 1].plot(tamanhos, sort2decres, label='Sort 2')
 
 # Configurações do gráfico
 axs[0, 1].set_title('Decrescente')
 axs[0, 1].legend()
 
 # Plotagem das retas
-axs[1, 0].plot(tamanhos, sort0rand, label='Sort 1')
-axs[1, 0].plot(tamanhos, sort1rand, label='Sort 2')
-axs[1, 0].plot(tamanhos, sort2cres, label='Sort 3')
+axs[1, 0].plot(tamanhos, sort0rand, label='Sort 0')
+axs[1, 0].plot(tamanhos, sort1rand, label='Sort 1')
+axs[1, 0].plot(tamanhos, sort2cres, label='Sort 2')
 
 # Configurações do gráfico
 axs[1, 0].set_title('Aleatório')
 axs[1, 0].legend()
 
 # Plotagem das retas
-axs[1, 1].plot(tamanhos, sort0randrep, label='Sort 1')
-axs[1, 1].plot(tamanhos, sort1randrep, label='Sort 2')
-axs[1, 1].plot(tamanhos, sort2randrep, label='Sort 3')
+axs[1, 1].plot(tamanhos, sort0randrep, label='Sort 0')
+axs[1, 1].plot(tamanhos, sort1randrep, label='Sort 1')
+axs[1, 1].plot(tamanhos, sort2randrep, label='Sort 2')
 
 # Configurações do gráfico
-axs[1, 1].set_title('Com Repetição')
+axs[1, 1].set_title('Aleatório Com Repetição')
 axs[1, 1].legend()
 
 # Exibição do gráfico

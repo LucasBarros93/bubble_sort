@@ -3,28 +3,26 @@
 #include <time.h>
 
 void bubble_sort_0(int *arr, int size){  // função pura, sem nenhuma otimização
-    int aux, flag;
+    int aux;
     for (int k = 1; k < size; k++) {
         for (int j = 0; j < size - 1; j++) { 
             if (arr[j] > arr[j+1]) {
                 aux      = arr[j];
                 arr[j]   = arr[j+1];
                 arr[j+1] = aux;
-                flag = 1;
             }
         }
     }
 }
 
 void bubble_sort_1(int *arr, int size){  // função com primeira melhoria implementada
-    int aux, flag;
+    int aux;
     for (int k = 1; k < size; k++) {
         for (int j = 0; j < size - k; j++) { // aqui está a primeira otimização, o vetor sempre é percorrido uma "casa" a menos, pois a cada iteração temos certeza que o maior numero está o final, então ele não é comparado com os demais.
             if (arr[j] > arr[j+1]) {
                 aux      = arr[j];
                 arr[j]   = arr[j+1];
                 arr[j+1] = aux;
-                flag = 1;
             }
         }
     }
@@ -68,7 +66,7 @@ int main(void) {
             return 1;
         }
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             int x = 0;
 
             fscanf(fp, "%d", &size);  // lendo apenas a primeira linha para saber quantos números o arquivo tem
@@ -109,9 +107,9 @@ int main(void) {
         }
         fclose(fp);
 
-        double avg_time_0 = total_time_0 / 10.0;
-        double avg_time_1 = total_time_1 / 10.0;
-        double avg_time_2 = total_time_2 / 10.0;
+        double avg_time_0 = total_time_0 / 20.0;
+        double avg_time_1 = total_time_1 / 20.0;
+        double avg_time_2 = total_time_2 / 20.0;
         //printf("Tempo médio para o arquivo %d: %lf\n", n, avg_time);
         fprintf(fw, "%d, %lf, %lf, %lf \n", n, avg_time_0, avg_time_1, avg_time_2);
     }

@@ -1,3 +1,6 @@
+# André Vargas VIllalba Codorniz - 14558436
+# Lucas Augusto Moreira Barros - 14590610
+
 import csv
 import matplotlib.pyplot as plt
 
